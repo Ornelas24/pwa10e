@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>PWA - 20/10/22</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="w3.css">
+        <link rel="manifest" href="manifiesto.json">
+    </head>
+    <body>
+        <script src="script.js"></script>
+        <div class="w3-row">       
+            <div class="w3-col s12 w3-amber w3-center"><p>Figuras</p></div>        
+        </div>
+        <div class="w3-row">
+            <div class="w3-col s3 w3-green w3-center">
+                <p>
+                    <a href="javascript:void(0)" 
+                       onclick="exhibirLineas()">
+                       Exhibir líneas
+                    </a>
+                    <br />
+                </p>
+            </div>
+            <div class="w3-col s9 w3-white w3-center">
+                <canvas 
+                    id="lienzo"
+                    width="600"
+                    height="500"
+                    style="border:1px solid #000000"
+                >
+                </canvas>
+            </div>
+        </div>
+        <div id="contenido">
+        </div>
+        <script src="fig.js"></script>
+        
+        <script>
+            if('serviceWorker' in navigator){
+                navigator.serviceWorker.register('sw.js')
+                .then(
+                    function(registration){
+                        alert('Reg. satisfactorio del sw');
+                        console.log('Reg. satisfactorio del sw en el ámbito: ',
+                                    registration.scope);
+                    }
+                ).catch(
+                    function(err){
+                        alert('El SW no se registró');
+                        console.log('El SW no se registró', err);
+                    }
+                );
+            }
+        </script>
+    </body>
+</html>
